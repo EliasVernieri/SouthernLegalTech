@@ -8,7 +8,7 @@ const pdf = require("pdf-creator-node");
 const fs = require('fs');
 
 // Read HTML Template
-var html = fs.readFileSync('MiPDFTemplate.html', 'utf8');
+var html = fs.readFileSync('views/MiPDFTemplate.html', 'utf8');
 
 var options = {
   format: "A3",
@@ -64,7 +64,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
   res.render('index');
   console.log(req.body.doc);
-  
+
   pdf.create(document, options)
   .then(res => {
       console.log(res)
